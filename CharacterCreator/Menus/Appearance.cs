@@ -176,83 +176,83 @@ namespace CharacterCreator.SubMenus
 
 
             // hair
-            int currentHairStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.hairStyle : GetPedDrawableVariation(Game.PlayerPed.Handle, 2);
-            int currentHairColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.hairColor : 0;
-            int currentHairHighlightColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.hairHighlightColor : 0;
+            int currentHairStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.hairStyle : GetPedDrawableVariation(Game.PlayerPed.Handle, 2);
+            int currentHairColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.hairColor : 0;
+            int currentHairHighlightColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.hairHighlightColor : 0;
 
             // 0 blemishes
-            int currentBlemishesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.blemishesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 0) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 0) : 0;
-            float currentBlemishesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.blemishesOpacity : 0f;
+            int currentBlemishesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.blemishesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 0) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 0) : 0;
+            float currentBlemishesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.blemishesOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 0, currentBlemishesStyle, currentBlemishesOpacity);
 
             // 1 beard
-            int currentBeardStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.beardStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 1) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 1) : 0;
-            float currentBeardOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.beardOpacity : 0f;
-            int currentBeardColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.beardColor : 0;
+            int currentBeardStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.beardStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 1) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 1) : 0;
+            float currentBeardOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.beardOpacity : 0f;
+            int currentBeardColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.beardColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 1, currentBeardStyle, currentBeardOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 1, 1, currentBeardColor, currentBeardColor);
 
             // 2 eyebrows
-            int currentEyebrowStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.eyebrowsStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 2) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 2) : 0;
-            float currentEyebrowOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.eyebrowsOpacity : 0f;
-            int currentEyebrowColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.eyebrowsColor : 0;
+            int currentEyebrowStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.eyebrowsStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 2) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 2) : 0;
+            float currentEyebrowOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.eyebrowsOpacity : 0f;
+            int currentEyebrowColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.eyebrowsColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 2, currentEyebrowStyle, currentEyebrowOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 2, 1, currentEyebrowColor, currentEyebrowColor);
 
             // 3 ageing
-            int currentAgeingStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.ageingStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 3) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 3) : 0;
-            float currentAgeingOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.ageingOpacity : 0f;
+            int currentAgeingStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.ageingStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 3) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 3) : 0;
+            float currentAgeingOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.ageingOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 3, currentAgeingStyle, currentAgeingOpacity);
 
             // 4 makeup
-            int currentMakeupStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.makeupStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 4) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 4) : 0;
-            float currentMakeupOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.makeupOpacity : 0f;
-            int currentMakeupColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.makeupColor : 0;
+            int currentMakeupStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.makeupStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 4) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 4) : 0;
+            float currentMakeupOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.makeupOpacity : 0f;
+            int currentMakeupColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.makeupColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 4, currentMakeupStyle, currentMakeupOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 4, 2, currentMakeupColor, currentMakeupColor);
 
             // 5 blush
-            int currentBlushStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.blushStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 5) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 5) : 0;
-            float currentBlushOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.blushOpacity : 0f;
-            int currentBlushColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.blushColor : 0;
+            int currentBlushStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.blushStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 5) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 5) : 0;
+            float currentBlushOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.blushOpacity : 0f;
+            int currentBlushColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.blushColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 5, currentBlushStyle, currentBlushOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 5, 2, currentBlushColor, currentBlushColor);
 
             // 6 complexion
-            int currentComplexionStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.complexionStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 6) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 6) : 0;
-            float currentComplexionOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.complexionOpacity : 0f;
+            int currentComplexionStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.complexionStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 6) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 6) : 0;
+            float currentComplexionOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.complexionOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 6, currentComplexionStyle, currentComplexionOpacity);
 
             // 7 sun damage
-            int currentSunDamageStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.sunDamageStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 7) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 7) : 0;
-            float currentSunDamageOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.sunDamageOpacity : 0f;
+            int currentSunDamageStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.sunDamageStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 7) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 7) : 0;
+            float currentSunDamageOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.sunDamageOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 7, currentSunDamageStyle, currentSunDamageOpacity);
 
             // 8 lipstick
-            int currentLipstickStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.lipstickStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 8) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 8) : 0;
-            float currentLipstickOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.lipstickOpacity : 0f;
-            int currentLipstickColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.lipstickColor : 0;
+            int currentLipstickStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.lipstickStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 8) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 8) : 0;
+            float currentLipstickOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.lipstickOpacity : 0f;
+            int currentLipstickColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.lipstickColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 8, currentLipstickStyle, currentLipstickOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 8, 2, currentLipstickColor, currentLipstickColor);
 
             // 9 moles/freckles
-            int currentMolesFrecklesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.molesFrecklesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 9) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 9) : 0;
-            float currentMolesFrecklesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.molesFrecklesOpacity : 0f;
+            int currentMolesFrecklesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.molesFrecklesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 9) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 9) : 0;
+            float currentMolesFrecklesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.molesFrecklesOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 9, currentMolesFrecklesStyle, currentMolesFrecklesOpacity);
 
             // 10 chest hair
-            int currentChesthairStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.chestHairStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 10) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 10) : 0;
-            float currentChesthairOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.chestHairOpacity : 0f;
-            int currentChesthairColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.chestHairColor : 0;
+            int currentChesthairStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.chestHairStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 10) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 10) : 0;
+            float currentChesthairOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.chestHairOpacity : 0f;
+            int currentChesthairColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.chestHairColor : 0;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 10, currentChesthairStyle, currentChesthairOpacity);
             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 10, 1, currentChesthairColor, currentChesthairColor);
 
             // 11 body blemishes
-            int currentBodyBlemishesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.bodyBlemishesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 11) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 11) : 0;
-            float currentBodyBlemishesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.bodyBlemishesOpacity : 0f;
+            int currentBodyBlemishesStyle = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.bodyBlemishesStyle : GetPedHeadOverlayValue(Game.PlayerPed.Handle, 11) != 255 ? GetPedHeadOverlayValue(Game.PlayerPed.Handle, 11) : 0;
+            float currentBodyBlemishesOpacity = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.bodyBlemishesOpacity : 0f;
             SetPedHeadOverlay(Game.PlayerPed.Handle, 11, currentBodyBlemishesStyle, currentBodyBlemishesOpacity);
 
-            int currentEyeColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.currentCharacter.PedAppearance.eyeColor : 0;
+            int currentEyeColor = MakeCreateCharacterMenu.IsEdidtingPed ? Creator.CurrentCharacter.PedAppearance.eyeColor : 0;
             SetPedEyeColor(Game.PlayerPed.Handle, currentEyeColor);
 
             MenuListItem hairStyles = new MenuListItem("Hair Style", hairStylesList, currentHairStyle, "Select a hair style.");
@@ -447,21 +447,21 @@ namespace CharacterCreator.SubMenus
                 if (itemIndex == 0) // hair style
                 {
                     ClearPedFacialDecorations(Game.PlayerPed.Handle);
-                    Creator.currentCharacter.PedAppearance.HairOverlay = new KeyValuePair<string, string>("", "");
+                    Creator.CurrentCharacter.PedAppearance.HairOverlay = new KeyValuePair<string, string>("", "");
 
                     if (newSelectionIndex >= GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, 2))
                     {
                         SetPedComponentVariation(Game.PlayerPed.Handle, 2, 0, 0, 0);
-                        Creator.currentCharacter.PedAppearance.hairStyle = 0;
+                        Creator.CurrentCharacter.PedAppearance.hairStyle = 0;
                     }
                     else
                     {
                         SetPedComponentVariation(Game.PlayerPed.Handle, 2, newSelectionIndex, 0, 0);
-                        Creator.currentCharacter.PedAppearance.hairStyle = newSelectionIndex;
+                        Creator.CurrentCharacter.PedAppearance.hairStyle = newSelectionIndex;
                         if (hairOverlays.ContainsKey(newSelectionIndex))
                         {
                             SetPedFacialDecoration(Game.PlayerPed.Handle, (uint)GetHashKey(hairOverlays[newSelectionIndex].Key), (uint)GetHashKey(hairOverlays[newSelectionIndex].Value));
-                            Creator.currentCharacter.PedAppearance.HairOverlay = new KeyValuePair<string, string>(hairOverlays[newSelectionIndex].Key, hairOverlays[newSelectionIndex].Value);
+                            Creator.CurrentCharacter.PedAppearance.HairOverlay = new KeyValuePair<string, string>(hairOverlays[newSelectionIndex].Key, hairOverlays[newSelectionIndex].Value);
                         }
                     }
                 }
@@ -474,14 +474,14 @@ namespace CharacterCreator.SubMenus
 
                     SetPedHairColor(Game.PlayerPed.Handle, hairColor, hairHighlightColor);
 
-                    Creator.currentCharacter.PedAppearance.hairColor = hairColor;
-                    Creator.currentCharacter.PedAppearance.hairHighlightColor = hairHighlightColor;
+                    Creator.CurrentCharacter.PedAppearance.hairColor = hairColor;
+                    Creator.CurrentCharacter.PedAppearance.hairHighlightColor = hairHighlightColor;
                 }
                 else if (itemIndex == 33) // eye color
                 {
                     int selection = ((MenuListItem)_menu.GetMenuItems()[itemIndex]).ListIndex;
                     SetPedEyeColor(Game.PlayerPed.Handle, selection);
-                    Creator.currentCharacter.PedAppearance.eyeColor = selection;
+                    Creator.CurrentCharacter.PedAppearance.eyeColor = selection;
                 }
                 else
                 {
@@ -499,87 +499,87 @@ namespace CharacterCreator.SubMenus
                     {
                         case 3: // blemishes
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 0, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.blemishesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.blemishesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.blemishesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.blemishesOpacity = opacity;
                             break;
                         case 5: // beards
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 1, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.beardStyle = selection;
-                            Creator.currentCharacter.PedAppearance.beardOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.beardStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.beardOpacity = opacity;
                             break;
                         case 7: // beards color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 1, 1, selection, selection);
-                            Creator.currentCharacter.PedAppearance.beardColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.beardColor = selection;
                             break;
                         case 8: // eyebrows
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 2, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.eyebrowsStyle = selection;
-                            Creator.currentCharacter.PedAppearance.eyebrowsOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.eyebrowsStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.eyebrowsOpacity = opacity;
                             break;
                         case 10: // eyebrows color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 2, 1, selection, selection);
-                            Creator.currentCharacter.PedAppearance.eyebrowsColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.eyebrowsColor = selection;
                             break;
                         case 11: // ageing
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 3, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.ageingStyle = selection;
-                            Creator.currentCharacter.PedAppearance.ageingOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.ageingStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.ageingOpacity = opacity;
                             break;
                         case 13: // makeup
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 4, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.makeupStyle = selection;
-                            Creator.currentCharacter.PedAppearance.makeupOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.makeupStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.makeupOpacity = opacity;
                             break;
                         case 15: // makeup color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 4, 2, selection, selection);
-                            Creator.currentCharacter.PedAppearance.makeupColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.makeupColor = selection;
                             break;
                         case 16: // blush style
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 5, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.blushStyle = selection;
-                            Creator.currentCharacter.PedAppearance.blushOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.blushStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.blushOpacity = opacity;
                             break;
                         case 18: // blush color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 5, 2, selection, selection);
-                            Creator.currentCharacter.PedAppearance.blushColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.blushColor = selection;
                             break;
                         case 19: // complexion
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 6, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.complexionStyle = selection;
-                            Creator.currentCharacter.PedAppearance.complexionOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.complexionStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.complexionOpacity = opacity;
                             break;
                         case 21: // sun damage
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 7, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.sunDamageStyle = selection;
-                            Creator.currentCharacter.PedAppearance.sunDamageOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.sunDamageStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.sunDamageOpacity = opacity;
                             break;
                         case 23: // lipstick
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 8, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.lipstickStyle = selection;
-                            Creator.currentCharacter.PedAppearance.lipstickOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.lipstickStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.lipstickOpacity = opacity;
                             break;
                         case 25: // lipstick color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 8, 2, selection, selection);
-                            Creator.currentCharacter.PedAppearance.lipstickColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.lipstickColor = selection;
                             break;
                         case 26: // moles and freckles
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 9, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.molesFrecklesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.molesFrecklesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.molesFrecklesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.molesFrecklesOpacity = opacity;
                             break;
                         case 28: // chest hair
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 10, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.chestHairStyle = selection;
-                            Creator.currentCharacter.PedAppearance.chestHairOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.chestHairStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.chestHairOpacity = opacity;
                             break;
                         case 30: // chest hair color
                             SetPedHeadOverlayColor(Game.PlayerPed.Handle, 10, 1, selection, selection);
-                            Creator.currentCharacter.PedAppearance.chestHairColor = selection;
+                            Creator.CurrentCharacter.PedAppearance.chestHairColor = selection;
                             break;
                         case 31: // body blemishes
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 11, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.bodyBlemishesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.bodyBlemishesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.bodyBlemishesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.bodyBlemishesOpacity = opacity;
                             break;
                     }
                 }
@@ -605,63 +605,63 @@ namespace CharacterCreator.SubMenus
                     {
                         case 4: // blemishes
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 0, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.blemishesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.blemishesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.blemishesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.blemishesOpacity = opacity;
                             break;
                         case 6: // beards
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 1, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.beardStyle = selection;
-                            Creator.currentCharacter.PedAppearance.beardOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.beardStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.beardOpacity = opacity;
                             break;
                         case 9: // eyebrows
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 2, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.eyebrowsStyle = selection;
-                            Creator.currentCharacter.PedAppearance.eyebrowsOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.eyebrowsStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.eyebrowsOpacity = opacity;
                             break;
                         case 12: // ageing
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 3, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.ageingStyle = selection;
-                            Creator.currentCharacter.PedAppearance.ageingOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.ageingStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.ageingOpacity = opacity;
                             break;
                         case 14: // makeup
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 4, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.makeupStyle = selection;
-                            Creator.currentCharacter.PedAppearance.makeupOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.makeupStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.makeupOpacity = opacity;
                             break;
                         case 17: // blush style
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 5, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.blushStyle = selection;
-                            Creator.currentCharacter.PedAppearance.blushOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.blushStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.blushOpacity = opacity;
                             break;
                         case 20: // complexion
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 6, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.complexionStyle = selection;
-                            Creator.currentCharacter.PedAppearance.complexionOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.complexionStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.complexionOpacity = opacity;
                             break;
                         case 22: // sun damage
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 7, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.sunDamageStyle = selection;
-                            Creator.currentCharacter.PedAppearance.sunDamageOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.sunDamageStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.sunDamageOpacity = opacity;
                             break;
                         case 24: // lipstick
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 8, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.lipstickStyle = selection;
-                            Creator.currentCharacter.PedAppearance.lipstickOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.lipstickStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.lipstickOpacity = opacity;
                             break;
                         case 27: // moles and freckles
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 9, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.molesFrecklesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.molesFrecklesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.molesFrecklesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.molesFrecklesOpacity = opacity;
                             break;
                         case 29: // chest hair
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 10, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.chestHairStyle = selection;
-                            Creator.currentCharacter.PedAppearance.chestHairOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.chestHairStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.chestHairOpacity = opacity;
                             break;
                         case 32: // body blemishes
                             SetPedHeadOverlay(Game.PlayerPed.Handle, 11, selection, opacity);
-                            Creator.currentCharacter.PedAppearance.bodyBlemishesStyle = selection;
-                            Creator.currentCharacter.PedAppearance.bodyBlemishesOpacity = opacity;
+                            Creator.CurrentCharacter.PedAppearance.bodyBlemishesStyle = selection;
+                            Creator.CurrentCharacter.PedAppearance.bodyBlemishesOpacity = opacity;
                             break;
                     }
                 }

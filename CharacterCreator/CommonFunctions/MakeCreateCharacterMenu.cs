@@ -9,7 +9,9 @@ namespace CharacterCreator.CommonFunctions
 {
     public class MakeCreateCharacterMenu : BaseScript
     {
-        private static Creator Creator { get; set; }
+        private static Creator CreatorInstance { get; set; }
+        private static Menu CreatorMenu { get; set; }
+        
 
         public static bool IsEdidtingPed = false;
         public static bool isMalePed = false;
@@ -28,38 +30,37 @@ namespace CharacterCreator.CommonFunctions
             SetPedEyeColor(Game.PlayerPed.Handle, 0);
             ClearAllPedProps(Game.PlayerPed.Handle);
             
-            Creator = new Creator();
-            var mainMenu = Creator.GetMenu();
-            Tick += Creator.OnTick;
+            CreatorInstance = new Creator();
+            CreatorMenu = CreatorInstance.GetMenu();
             
-            await EditingPed(male, editPed);
+            
+            
+            EditingPed(male, editPed);
         }
         
-        private static async Task EditingPed(bool male, bool editPed = false)
+        private static void EditingPed(bool male, bool editPed = false)
         {
-            await BaseScript.Delay(0);
-            
             if (!editPed)
             {
-                Creator.currentCharacter = new DataManager.MultiplayerPedData();
-                Creator.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
-                Creator.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
-                Creator.currentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
-                Creator.currentCharacter.Version = 1;
-                Creator.currentCharacter.ModelHash = male ? (uint)GetHashKey("mp_m_freemode_01") : (uint)GetHashKey("mp_f_freemode_01");
-                Creator.currentCharacter.IsMale = male;
+                Creator.CurrentCharacter = new DataManager.MultiplayerPedData();
+                Creator.CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.CurrentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
+                Creator.CurrentCharacter.Version = 1;
+                Creator.CurrentCharacter.ModelHash = male ? (uint)GetHashKey("mp_m_freemode_01") : (uint)GetHashKey("mp_f_freemode_01");
+                Creator.CurrentCharacter.IsMale = male;
 
                 SetPedComponentVariation(Game.PlayerPed.Handle, 3, 15, 0, 0);
                 SetPedComponentVariation(Game.PlayerPed.Handle, 8, 15, 0, 0);
                 SetPedComponentVariation(Game.PlayerPed.Handle, 11, 15, 0, 0);
             }
-            if (Creator.currentCharacter.DrawableVariations.clothes == null)
+            if (Creator.CurrentCharacter.DrawableVariations.clothes == null)
             {
-                Creator.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
             }
-            if (Creator.currentCharacter.PropVariations.props == null)
+            if (Creator.CurrentCharacter.PropVariations.props == null)
             {
-                Creator.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
             }
 
             //MainMenu.Appearance = new AppearanceMenu();
@@ -68,6 +69,40 @@ namespace CharacterCreator.CommonFunctions
 
             //MainMenu.AppearanceMenu.RefreshIndex();
             //MainMenu.InheritanceMenu.RefreshIndex();
+        }
+        
+        public static async Task OnTick()
+        {
+            await BaseScript.Delay(100);
+            var currentMenu = MenuController.GetCurrentMenu();
+            if (CreatorMenu != null)
+            {
+                bool IsOpen()
+                {
+                    return
+                        CreatorMenu.Visible ||
+                        Inheritance.InheritanceMenu.Visible;
+
+                }
+                if (IsOpen())
+                {
+                    if (currentMenu == CreatorMenu)
+                    {
+                        Creator.DisableBackButton = true;
+                    }
+                    else
+                    {
+                        Creator.DisableBackButton = false;
+                    }
+
+                    Creator.DontCloseMenus = true;
+                }
+                else
+                {
+                    Creator.DisableBackButton = false;
+                    Creator.DontCloseMenus = false;
+                }
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ namespace CharacterCreator
         public CharacterCreator()
         {
             OpenMenu();
+            Tick += MakeCreateCharacterMenu.OnTick;
         }
 
         private void OpenMenu()

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using AlsekLibShared;
 using CharacterCreator.CommonFunctions;
 using CharacterCreator.SubMenus;
 using CitizenFX.Core;
@@ -7,13 +8,13 @@ using MenuAPI;
 
 namespace CharacterCreator
 {
-    public class Creator
+    public class Creator : BaseScript
     {
         public static Menu CreatorMenu;
         
         public static bool DontCloseMenus { get { return MenuController.PreventExitingMenu; } set { MenuController.PreventExitingMenu = value; } }
         public static bool DisableBackButton { get { return MenuController.DisableBackButton; } set { MenuController.DisableBackButton = value; } }
-        public static DataManager.MultiplayerPedData currentCharacter = new DataManager.MultiplayerPedData();
+        public static DataManager.MultiplayerPedData CurrentCharacter = new DataManager.MultiplayerPedData();
 
         private void CreateMenu()
         {
@@ -125,40 +126,6 @@ namespace CharacterCreator
                 CreateMenu();
             }
             return CreatorMenu;
-        }
-        
-        public async Task OnTick()
-        {
-            await BaseScript.Delay(100);
-            var currentMenu = MenuController.GetCurrentMenu();
-            if (CreatorMenu != null)
-            {
-                bool IsOpen()
-                {
-                    return
-                        CreatorMenu.Visible ||
-                        Inheritance.InheritanceMenu.Visible;
-
-                }
-                if (IsOpen())
-                {
-                    if (currentMenu == CreatorMenu)
-                    {
-                        DisableBackButton = true;
-                    }
-                    else
-                    {
-                        DisableBackButton = false;
-                    }
-
-                    DontCloseMenus = true;
-                }
-                else
-                {
-                    DisableBackButton = false;
-                    DontCloseMenus = false;
-                }
-            }
         }
 
         /// <summary>

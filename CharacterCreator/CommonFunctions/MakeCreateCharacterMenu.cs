@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CharacterCreator.SubMenus;
 using CitizenFX.Core;
 using MenuAPI;
@@ -6,40 +7,67 @@ using static CitizenFX.Core.Native.API;
 
 namespace CharacterCreator.CommonFunctions
 {
-    public class MakeCreateCharacterMenu
+    public class MakeCreateCharacterMenu : BaseScript
     {
-        private static bool isEdidtingPed = false;
+        private static Creator Creator { get; set; }
 
-        public static void Main(bool male, bool editPed = false)
+        public static bool IsEdidtingPed = false;
+        public static bool isMalePed = false;
+
+        public async void SetupMain(bool male, bool editPed = false)
         {
-            isEdidtingPed = editPed;
+            IsEdidtingPed = editPed;
+            isMalePed = male;
+            
+            await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
+            
+            ClearPedDecorations(Game.PlayerPed.Handle);
+            ClearPedFacialDecorations(Game.PlayerPed.Handle);
+            SetPedDefaultComponentVariation(Game.PlayerPed.Handle);
+            SetPedHairColor(Game.PlayerPed.Handle, 0, 0);
+            SetPedEyeColor(Game.PlayerPed.Handle, 0);
+            ClearAllPedProps(Game.PlayerPed.Handle);
+            
+            Creator = new Creator();
+            var mainMenu = Creator.GetMenu();
+            Tick += Creator.OnTick;
+            
+            await EditingPed(male, editPed);
+        }
+        
+        private static async Task EditingPed(bool male, bool editPed = false)
+        {
+            await BaseScript.Delay(0);
+            
             if (!editPed)
             {
-                MainMenu.currentCharacter = new DataManager.MultiplayerPedData();
-                MainMenu.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
-                MainMenu.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
-                MainMenu.currentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
-                MainMenu.currentCharacter.Version = 1;
-                MainMenu.currentCharacter.ModelHash = male ? (uint)GetHashKey("mp_m_freemode_01") : (uint)GetHashKey("mp_f_freemode_01");
-                MainMenu.currentCharacter.IsMale = male;
+                Creator.currentCharacter = new DataManager.MultiplayerPedData();
+                Creator.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.currentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
+                Creator.currentCharacter.Version = 1;
+                Creator.currentCharacter.ModelHash = male ? (uint)GetHashKey("mp_m_freemode_01") : (uint)GetHashKey("mp_f_freemode_01");
+                Creator.currentCharacter.IsMale = male;
 
                 SetPedComponentVariation(Game.PlayerPed.Handle, 3, 15, 0, 0);
                 SetPedComponentVariation(Game.PlayerPed.Handle, 8, 15, 0, 0);
                 SetPedComponentVariation(Game.PlayerPed.Handle, 11, 15, 0, 0);
             }
-            if (MainMenu.currentCharacter.DrawableVariations.clothes == null)
+            if (Creator.currentCharacter.DrawableVariations.clothes == null)
             {
-                MainMenu.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.currentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
             }
-            if (MainMenu.currentCharacter.PropVariations.props == null)
+            if (Creator.currentCharacter.PropVariations.props == null)
             {
-                MainMenu.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                Creator.currentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
             }
 
-            AppearanceMenu.SetupMenu(male, editPed);
+            //MainMenu.Appearance = new AppearanceMenu();
+            //MainMenu.AppearanceMenu = MainMenu.Appearance.GetMenu(male, editPed);
+            //AppearanceMenu.CreateMenu(male);
 
-            MainMenu.AppearanceMenu.RefreshIndex();
-            MainMenu.InheritanceMenu.RefreshIndex();
+            //MainMenu.AppearanceMenu.RefreshIndex();
+            //MainMenu.InheritanceMenu.RefreshIndex();
         }
     }
 }

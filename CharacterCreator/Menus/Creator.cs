@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CharacterCreator.CommonFunctions;
 using CharacterCreator.SubMenus;
 using CitizenFX.Core;
@@ -8,15 +7,10 @@ using MenuAPI;
 
 namespace CharacterCreator
 {
-    public class MainMenu
+    public class Creator
     {
-        private Menu _mainMenu;
-        public static InheritanceMenu Inheritance { get; private set; }
-        public static Menu InheritanceMenu = null;
+        public static Menu CreatorMenu;
         
-        public static AppearanceMenu Appearance { get; private set; }
-        public static Menu AppearanceMenu = null;
-
         public static bool DontCloseMenus { get { return MenuController.PreventExitingMenu; } set { MenuController.PreventExitingMenu = value; } }
         public static bool DisableBackButton { get { return MenuController.DisableBackButton; } set { MenuController.DisableBackButton = value; } }
         public static DataManager.MultiplayerPedData currentCharacter = new DataManager.MultiplayerPedData();
@@ -28,34 +22,22 @@ namespace CharacterCreator
             MenuController.EnableMenuToggleKeyOnController = false;
             // debug code
             
-            _mainMenu = new Menu("Create Character", "Create A New Character") { Visible = true };
-            MenuController.AddMenu(_mainMenu);
+            CreatorMenu = new Menu("Create Character", "Create A New Character") { Visible = true };
+            MenuController.AddMenu(CreatorMenu);
 
             
             #region InheritanceMenu
-            Inheritance = new InheritanceMenu();
-            InheritanceMenu = Inheritance.GetMenu();
-            
-            MenuItem inheritanceButton = new MenuItem("Character Inheritance", "Character inheritance options.");
-            inheritanceButton.Label = "→→→";
-            _mainMenu.AddMenuItem(inheritanceButton);
-            MenuController.BindMenuItem(_mainMenu, InheritanceMenu, inheritanceButton);
+            Inheritance.CreateMenu();
             #endregion
 
             #region AppearanceMenu
-            Appearance = new AppearanceMenu();
-            AppearanceMenu = Appearance.GetMenu();
-            
-            MenuItem appearanceButton = new MenuItem("Character Appearance", "Character appearance options.");
-            appearanceButton.Label = "→→→";
-            _mainMenu.AddMenuItem(appearanceButton);
-            MenuController.BindMenuItem(_mainMenu, AppearanceMenu, appearanceButton);
+            Appearance.CreateMenu();
             #endregion
             
             MenuItem saveButton = new MenuItem("Save Character", "Save your character.");
             MenuItem exitNoSave = new MenuItem("Exit Without Saving", "Are you sure? All unsaved work will be lost.");
-            _mainMenu.AddMenuItem(saveButton);
-            _mainMenu.AddMenuItem(exitNoSave);
+            CreatorMenu.AddMenuItem(saveButton);
+            CreatorMenu.AddMenuItem(exitNoSave);
             
             /*
              ########################################################
@@ -64,7 +46,7 @@ namespace CharacterCreator
             */
             
             // handle button presses for the createCharacter menu.
-            _mainMenu.OnItemSelect += async (sender, item, index) =>
+            CreatorMenu.OnItemSelect += async (sender, item, index) =>
             {
                 if (item == saveButton) // save ped
                 {
@@ -79,7 +61,7 @@ namespace CharacterCreator
                             await BaseScript.Delay(0);
                         await BaseScript.Delay(100);
 
-                        _mainMenu.GoBack();
+                        CreatorMenu.GoBack();
                     }
                 }
                 else if (item == exitNoSave) // exit without saving
@@ -87,7 +69,7 @@ namespace CharacterCreator
                     bool confirm = false;
                     AddTextEntry("warning_message_first_line", "Are you sure you want to exit the character creator?");
                     AddTextEntry("warning_message_second_line", "You will lose all (unsaved) customization!");
-                    _mainMenu.CloseMenu();
+                    CreatorMenu.CloseMenu();
 
                     // wait for confirmation or cancel input.
                     while (true)
@@ -117,17 +99,17 @@ namespace CharacterCreator
                     else // otherwise cancel and go back to the editor.
                     {
                         await BaseScript.Delay(100);
-                        _mainMenu.OpenMenu();
+                        CreatorMenu.OpenMenu();
                     }
                 }
-                else if (item == inheritanceButton) // update the inheritance menu anytime it's opened to prevent some weird glitch where old data is used.
+                else if (item == Inheritance.InheritanceButton) // update the inheritance menu anytime it's opened to prevent some weird glitch where old data is used.
                 {
                     var data = Game.PlayerPed.GetHeadBlendData();
-                    SubMenus.InheritanceMenu.inheritanceDads.ListIndex = data.FirstFaceShape;
-                    SubMenus.InheritanceMenu.inheritanceMoms.ListIndex = data.SecondFaceShape;
-                    SubMenus.InheritanceMenu.inheritanceShapeMix.Position = (int)(data.ParentFaceShapePercent * 10f);
-                    SubMenus.InheritanceMenu.inheritanceSkinMix.Position = (int)(data.ParentSkinTonePercent * 10f);
-                    InheritanceMenu.RefreshIndex();
+                    Inheritance.inheritanceDads.ListIndex = data.FirstFaceShape;
+                    Inheritance.inheritanceMoms.ListIndex = data.SecondFaceShape;
+                    Inheritance.inheritanceShapeMix.Position = (int)(data.ParentFaceShapePercent * 10f);
+                    Inheritance.inheritanceSkinMix.Position = (int)(data.ParentSkinTonePercent * 10f);
+                    Inheritance.InheritanceMenu.RefreshIndex();
                 }
             };
         }
@@ -138,29 +120,29 @@ namespace CharacterCreator
         /// <returns>The Menu</returns>
         public Menu GetMenu()
         {
-            if (_mainMenu == null)
+            if (CreatorMenu == null)
             {
                 CreateMenu();
             }
-            return _mainMenu;
+            return CreatorMenu;
         }
         
         public async Task OnTick()
         {
-            await BaseScript.Delay(500);
+            await BaseScript.Delay(100);
             var currentMenu = MenuController.GetCurrentMenu();
-            if (_mainMenu != null)
+            if (CreatorMenu != null)
             {
                 bool IsOpen()
                 {
                     return
-                        _mainMenu.Visible ||
-                        InheritanceMenu.Visible;
+                        CreatorMenu.Visible ||
+                        Inheritance.InheritanceMenu.Visible;
 
                 }
                 if (IsOpen())
                 {
-                    if (currentMenu == _mainMenu)
+                    if (currentMenu == CreatorMenu)
                     {
                         DisableBackButton = true;
                     }

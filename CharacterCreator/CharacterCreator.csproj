@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlsekLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\dependencies\AlsekLib.dll</HintPath>
+    </Reference>
     <Reference Include="CitizenFX.Core.Client, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\CitizenFX.Core.Client.1.0.2072\lib\net45\CitizenFX.Core.Client.dll</HintPath>
       <Private>False</Private>
@@ -52,9 +55,10 @@
     <Compile Include="CharacterCreator.cs" />
     <Compile Include="CommonFunctions\DataManager.cs" />
     <Compile Include="CommonFunctions\MakeCreateCharacterMenu.cs" />
-    <Compile Include="MainMenu.cs" />
-    <Compile Include="SubMenus\AppearanceMenu.cs" />
-    <Compile Include="SubMenus\InheritanceMenu.cs" />
+    <Compile Include="CommonFunctions\SetPlayerSkin.cs" />
+    <Compile Include="Menus\Appearance.cs" />
+    <Compile Include="Menus\Inheritance.cs" />
+    <Compile Include="Menus\Creator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

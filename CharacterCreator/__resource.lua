@@ -6,6 +6,7 @@ client_debug_mode 'true'
 files {
     'Newtonsoft.Json.dll',
     'MenuAPI.dll',
+    'AlsekLib.dll',
 }
 
 client_script {

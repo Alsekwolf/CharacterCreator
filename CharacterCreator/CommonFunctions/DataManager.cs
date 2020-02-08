@@ -7,12 +7,12 @@ namespace CharacterCreator.CommonFunctions
     {
         public struct DrawableVariations
         {
-            public Dictionary<int, KeyValuePair<int, int>> clothes;
+            public Dictionary<int, KeyValuePair<int, int>> Clothes;
         }
 
         public struct PropVariations
         {
-            public Dictionary<int, KeyValuePair<int, int>> props;
+            public Dictionary<int, KeyValuePair<int, int>> Props;
         }
 
         public struct FaceShapeFeatures
@@ -21,7 +21,7 @@ namespace CharacterCreator.CommonFunctions
         }
 
         public struct PedTattoos
-        {
+        { //TODO:: Delete this?
             public List<KeyValuePair<string, string>> TorsoTattoos;
             public List<KeyValuePair<string, string>> HeadTattoos;
             public List<KeyValuePair<string, string>> LeftArmTattoos;
@@ -36,71 +36,71 @@ namespace CharacterCreator.CommonFunctions
 
         public struct PedAppearance
         {
-            public int hairStyle;
-            public int hairColor;
-            public int hairHighlightColor;
+            public int HairStyle;
+            public int HairColor;
+            public int HairHighlightColor;
             public KeyValuePair<string, string> HairOverlay;
 
             // 0 blemishes
-            public int blemishesStyle;
-            public float blemishesOpacity;
+            public int BlemishesStyle;
+            public float BlemishesOpacity;
 
             // 1 beard
-            public int beardStyle;
-            public int beardColor;
-            public float beardOpacity;
+            public int BeardStyle;
+            public int BeardColor;
+            public float BeardOpacity;
 
             // 2 eyebrows
-            public int eyebrowsStyle;
-            public int eyebrowsColor;
-            public float eyebrowsOpacity;
+            public int EyebrowsStyle;
+            public int EyebrowsColor;
+            public float EyebrowsOpacity;
 
             // 3 ageing
-            public int ageingStyle;
-            public float ageingOpacity;
+            public int AgeingStyle;
+            public float AgeingOpacity;
 
             // 4 makeup
-            public int makeupStyle;
-            public int makeupColor;
-            public float makeupOpacity;
+            public int MakeupStyle;
+            public int MakeupColor;
+            public float MakeupOpacity;
 
             // 5 blush
-            public int blushStyle;
-            public int blushColor;
-            public float blushOpacity;
+            public int BlushStyle;
+            public int BlushColor;
+            public float BlushOpacity;
 
             // 6 complexion
-            public int complexionStyle;
-            public float complexionOpacity;
+            public int ComplexionStyle;
+            public float ComplexionOpacity;
 
             // 7 sun damage
-            public int sunDamageStyle;
-            public float sunDamageOpacity;
+            public int SunDamageStyle;
+            public float SunDamageOpacity;
 
             // 8 lipstick
-            public int lipstickStyle;
-            public int lipstickColor;
-            public float lipstickOpacity;
+            public int LipstickStyle;
+            public int LipstickColor;
+            public float LipstickOpacity;
 
             // 9 moles / freckles
-            public int molesFrecklesStyle;
-            public float molesFrecklesOpacity;
+            public int MolesFrecklesStyle;
+            public float MolesFrecklesOpacity;
 
             // 10 chest hair
-            public int chestHairStyle;
-            public int chestHairColor;
-            public float chestHairOpacity;
+            public int ChestHairStyle;
+            public int ChestHairColor;
+            public float ChestHairOpacity;
 
             // 11 body blemishes
-            public int bodyBlemishesStyle;
-            public float bodyBlemishesOpacity;
+            public int BodyBlemishesStyle;
+            public float BodyBlemishesOpacity;
 
             // eye color
-            public int eyeColor;
+            public int EyeColor;
         }
 
         public struct MultiplayerPedData
-        {
+        { //TODO: delete used?
             public PedHeadBlendData PedHeadBlendData;
             public DrawableVariations DrawableVariations;
             public PropVariations PropVariations;

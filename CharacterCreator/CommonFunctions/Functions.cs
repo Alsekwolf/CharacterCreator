@@ -39,8 +39,8 @@ namespace CharacterCreator.CommonFunctions
             if (!editPed)
             {
                 CurrentCharacter = new DataManager.MultiplayerPedData();
-                CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
-                CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                CurrentCharacter.DrawableVariations.Clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
                 CurrentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
                 CurrentCharacter.Version = 1;
                 CurrentCharacter.ModelHash = male ? (uint)GetHashKey("mp_m_freemode_01") : (uint)GetHashKey("mp_f_freemode_01");
@@ -50,13 +50,13 @@ namespace CharacterCreator.CommonFunctions
                 SetPedComponentVariation(Game.PlayerPed.Handle, 8, 15, 0, 0);
                 SetPedComponentVariation(Game.PlayerPed.Handle, 11, 15, 0, 0);
             }
-            if (CurrentCharacter.DrawableVariations.clothes == null)
+            if (CurrentCharacter.DrawableVariations.Clothes == null)
             {
-                CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                CurrentCharacter.DrawableVariations.Clothes = new Dictionary<int, KeyValuePair<int, int>>();
             }
-            if (CurrentCharacter.PropVariations.props == null)
+            if (CurrentCharacter.PropVariations.Props == null)
             {
-                CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
             }
 
             //MainMenu.Appearance = new AppearanceMenu();

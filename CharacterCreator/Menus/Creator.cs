@@ -4,6 +4,7 @@ using AlsekLibShared;
 using CharacterCreator.CommonFunctions;
 using CitizenFX.Core;
 using MenuAPI;
+using Newtonsoft.Json;
 using static CitizenFX.Core.Native.API;
 
 namespace CharacterCreator.Menus
@@ -194,8 +195,12 @@ namespace CharacterCreator.Menus
         /// <returns></returns>
         private async Task<bool> SavePed()
         {
-            //TODO: this
-            await BaseScript.Delay(1);
+            await BaseScript.Delay(0);
+            Functions.CurrentCharacter.PedHeadBlendData = Game.PlayerPed.GetHeadBlendData();
+            string json = JsonConvert.SerializeObject(Functions.CurrentCharacter);
+            
+            BaseScript.TriggerServerEvent("CharacterCreator:SavePed", json);
+
             return true;
         }
     }

@@ -283,7 +283,7 @@ namespace CharacterCreator.CommonFunctions
                     }
                 }
                 /*else if (menu == MainMenu.MpPedCustomizationMenu.tattoosMenu)
-                { TODO: enable this
+                { TODO: Delete this?
                     switch (menu.CurrentIndex)
                     {
                         case 0: // head

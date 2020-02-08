@@ -26,8 +26,8 @@ namespace CharacterCreator.Menus
                     propId += 3;
                 }
 
-                int currentProp = Functions.IsEdidtingPed && Functions.CurrentCharacter.PropVariations.props.ContainsKey(propId) ? Functions.CurrentCharacter.PropVariations.props[propId].Key : GetPedPropIndex(Game.PlayerPed.Handle, propId);
-                int currentPropTexture = Functions.IsEdidtingPed && Functions.CurrentCharacter.PropVariations.props.ContainsKey(propId) ? Functions.CurrentCharacter.PropVariations.props[propId].Value : GetPedPropTextureIndex(Game.PlayerPed.Handle, propId);
+                int currentProp = Functions.IsEdidtingPed && Functions.CurrentCharacter.PropVariations.Props.ContainsKey(propId) ? Functions.CurrentCharacter.PropVariations.Props[propId].Key : GetPedPropIndex(Game.PlayerPed.Handle, propId);
+                int currentPropTexture = Functions.IsEdidtingPed && Functions.CurrentCharacter.PropVariations.Props.ContainsKey(propId) ? Functions.CurrentCharacter.PropVariations.Props[propId].Value : GetPedPropTextureIndex(Game.PlayerPed.Handle, propId);
 
                 List<string> propsList = new List<string>();
                 for (int i = 0; i < GetNumberOfPedPropDrawableVariations(Game.PlayerPed.Handle, propId); i++)
@@ -69,21 +69,21 @@ namespace CharacterCreator.Menus
                 {
                     SetPedPropIndex(Game.PlayerPed.Handle, propIndex, -1, -1, false);
                     ClearPedProp(Game.PlayerPed.Handle, propIndex);
-                    if (Functions.CurrentCharacter.PropVariations.props == null)
+                    if (Functions.CurrentCharacter.PropVariations.Props == null)
                     {
-                        Functions.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                        Functions.CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
                     }
-                    Functions.CurrentCharacter.PropVariations.props[propIndex] = new KeyValuePair<int, int>(-1, -1);
+                    Functions.CurrentCharacter.PropVariations.Props[propIndex] = new KeyValuePair<int, int>(-1, -1);
                     listItem.Description = $"Select a prop using the arrow keys and press ~o~enter~s~ to cycle through all available textures.";
                 }
                 else
                 {
                     SetPedPropIndex(Game.PlayerPed.Handle, propIndex, newSelectionIndex, textureIndex, true);
-                    if (Functions.CurrentCharacter.PropVariations.props == null)
+                    if (Functions.CurrentCharacter.PropVariations.Props == null)
                     {
-                        Functions.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                        Functions.CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
                     }
-                    Functions.CurrentCharacter.PropVariations.props[propIndex] = new KeyValuePair<int, int>(newSelectionIndex, textureIndex);
+                    Functions.CurrentCharacter.PropVariations.Props[propIndex] = new KeyValuePair<int, int>(newSelectionIndex, textureIndex);
                     if (GetPedPropIndex(Game.PlayerPed.Handle, propIndex) == -1)
                     {
                         listItem.Description = $"Select a prop using the arrow keys and press ~o~enter~s~ to cycle through all available textures.";
@@ -114,21 +114,21 @@ namespace CharacterCreator.Menus
                 {
                     SetPedPropIndex(Game.PlayerPed.Handle, propIndex, -1, -1, false);
                     ClearPedProp(Game.PlayerPed.Handle, propIndex);
-                    if (Functions.CurrentCharacter.PropVariations.props == null)
+                    if (Functions.CurrentCharacter.PropVariations.Props == null)
                     {
-                        Functions.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                        Functions.CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
                     }
-                    Functions.CurrentCharacter.PropVariations.props[propIndex] = new KeyValuePair<int, int>(-1, -1);
+                    Functions.CurrentCharacter.PropVariations.Props[propIndex] = new KeyValuePair<int, int>(-1, -1);
                     listItem.Description = $"Select a prop using the arrow keys and press ~o~enter~s~ to cycle through all available textures.";
                 }
                 else
                 {
                     SetPedPropIndex(Game.PlayerPed.Handle, propIndex, listIndex, newTextureIndex, true);
-                    if (Functions.CurrentCharacter.PropVariations.props == null)
+                    if (Functions.CurrentCharacter.PropVariations.Props == null)
                     {
-                        Functions.CurrentCharacter.PropVariations.props = new Dictionary<int, KeyValuePair<int, int>>();
+                        Functions.CurrentCharacter.PropVariations.Props = new Dictionary<int, KeyValuePair<int, int>>();
                     }
-                    Functions.CurrentCharacter.PropVariations.props[propIndex] = new KeyValuePair<int, int>(listIndex, newTextureIndex);
+                    Functions.CurrentCharacter.PropVariations.Props[propIndex] = new KeyValuePair<int, int>(listIndex, newTextureIndex);
                     if (GetPedPropIndex(Game.PlayerPed.Handle, propIndex) == -1)
                     {
                         listItem.Description = $"Select a prop using the arrow keys and press ~o~enter~s~ to cycle through all available textures.";

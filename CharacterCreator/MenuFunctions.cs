@@ -53,7 +53,7 @@ namespace CharacterCreator
             EditingPed(male, editPed);
         }
         
-        public static async void CloseMenu()
+        public static void CloseMenu()
         {
             MenuIsOpen = false;
             var currentMenu = MenuController.GetCurrentMenu();

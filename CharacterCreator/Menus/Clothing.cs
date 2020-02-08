@@ -23,8 +23,8 @@ namespace CharacterCreator.Menus
             {
                 if (i != 0 && i != 2)
                 {
-                    int currentVariationIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.clothes[i].Key : GetPedDrawableVariation(Game.PlayerPed.Handle, i);
-                    int currentVariationTextureIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.clothes[i].Value : GetPedTextureVariation(Game.PlayerPed.Handle, i);
+                    int currentVariationIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.Clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.Clothes[i].Key : GetPedDrawableVariation(Game.PlayerPed.Handle, i);
+                    int currentVariationTextureIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.Clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.Clothes[i].Value : GetPedTextureVariation(Game.PlayerPed.Handle, i);
 
                     //int maxDrawables = GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, i);
                     int maxDrawables = 16;
@@ -67,14 +67,14 @@ namespace CharacterCreator.Menus
                 int textureIndex = GetPedTextureVariation(Game.PlayerPed.Handle, componentIndex);
                 int newTextureIndex = 0;
                 SetPedComponentVariation(Game.PlayerPed.Handle, componentIndex, newSelectionIndex, newTextureIndex, 0);
-                if (Functions.CurrentCharacter.DrawableVariations.clothes == null)
+                if (Functions.CurrentCharacter.DrawableVariations.Clothes == null)
                 {
-                    Functions.CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                    Functions.CurrentCharacter.DrawableVariations.Clothes = new Dictionary<int, KeyValuePair<int, int>>();
                 }
 
                 int maxTextures = GetNumberOfPedTextureVariations(Game.PlayerPed.Handle, componentIndex, newSelectionIndex);
 
-                Functions.CurrentCharacter.DrawableVariations.clothes[componentIndex] = new KeyValuePair<int, int>(newSelectionIndex, newTextureIndex);
+                Functions.CurrentCharacter.DrawableVariations.Clothes[componentIndex] = new KeyValuePair<int, int>(newSelectionIndex, newTextureIndex);
                 listItem.Description = $"Select a drawable using the arrow keys and press ~o~enter~s~ to cycle through all available textures. Currently selected texture: #{newTextureIndex + 1} (of {maxTextures}).";
             };
 
@@ -89,14 +89,14 @@ namespace CharacterCreator.Menus
                 int textureIndex = GetPedTextureVariation(Game.PlayerPed.Handle, componentIndex);
                 int newTextureIndex = (GetNumberOfPedTextureVariations(Game.PlayerPed.Handle, componentIndex, listIndex) - 1) < (textureIndex + 1) ? 0 : textureIndex + 1;
                 SetPedComponentVariation(Game.PlayerPed.Handle, componentIndex, listIndex, newTextureIndex, 0);
-                if (Functions.CurrentCharacter.DrawableVariations.clothes == null)
+                if (Functions.CurrentCharacter.DrawableVariations.Clothes == null)
                 {
-                    Functions.CurrentCharacter.DrawableVariations.clothes = new Dictionary<int, KeyValuePair<int, int>>();
+                    Functions.CurrentCharacter.DrawableVariations.Clothes = new Dictionary<int, KeyValuePair<int, int>>();
                 }
 
                 int maxTextures = GetNumberOfPedTextureVariations(Game.PlayerPed.Handle, componentIndex, listIndex);
 
-                Functions.CurrentCharacter.DrawableVariations.clothes[componentIndex] = new KeyValuePair<int, int>(listIndex, newTextureIndex);
+                Functions.CurrentCharacter.DrawableVariations.Clothes[componentIndex] = new KeyValuePair<int, int>(listIndex, newTextureIndex);
                 listItem.Description = $"Select a drawable using the arrow keys and press ~o~enter~s~ to cycle through all available textures. Currently selected texture: #{newTextureIndex + 1} (of {maxTextures}).";
             };
             #endregion

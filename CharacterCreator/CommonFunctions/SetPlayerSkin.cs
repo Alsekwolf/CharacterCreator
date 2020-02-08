@@ -7,7 +7,7 @@ using AlsekLibShared;
 
 namespace CharacterCreator.CommonFunctions
 {
-    public class SetPlayerSkin
+    internal class SetPlayerSkin
     {
         #region ped info struct
         public struct PedInfo

@@ -8,13 +8,9 @@ using MenuAPI;
 
 namespace CharacterCreator
 {
-    public class Creator : BaseScript
+    internal class Creator : BaseScript
     {
         public static Menu CreatorMenu;
-        
-        public static bool DontCloseMenus { get { return MenuController.PreventExitingMenu; } set { MenuController.PreventExitingMenu = value; } }
-        public static bool DisableBackButton { get { return MenuController.DisableBackButton; } set { MenuController.DisableBackButton = value; } }
-        public static DataManager.MultiplayerPedData CurrentCharacter = new DataManager.MultiplayerPedData();
 
         private void CreateMenu()
         {

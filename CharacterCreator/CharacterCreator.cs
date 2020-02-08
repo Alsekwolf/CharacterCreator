@@ -7,26 +7,12 @@ namespace CharacterCreator
     public class CharacterCreator : BaseScript
     {
 
+        //TODO: remove this whole file, it's only for testing
         public CharacterCreator()
         {
-            OpenMenu();
-            Tick += MakeCreateCharacterMenu.OnTick;
+            //MenuFunctions.OpenMenu(true);
+            //Tick += Functions.OnTick;
         }
-
-        private void OpenMenu()
-        {
-            int maxHealth = Game.PlayerPed.MaxHealth;
-            int maxArmour = Game.Player.MaxArmor;
-            int health = Game.PlayerPed.Health;
-            int armour = Game.PlayerPed.Armor;
-
-            Game.Player.MaxArmor = maxArmour;
-            Game.PlayerPed.MaxHealth = maxHealth;
-            Game.PlayerPed.Health = health;
-            Game.PlayerPed.Armor = armour;
-            
-            var instance = new MakeCreateCharacterMenu();
-            instance.SetupMain(male: true);
-        }
+        
     }
 }

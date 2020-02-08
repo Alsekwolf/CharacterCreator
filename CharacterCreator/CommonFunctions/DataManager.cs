@@ -3,7 +3,7 @@ using CitizenFX.Core;
 
 namespace CharacterCreator.CommonFunctions
 {
-    public class DataManager
+    internal static class DataManager
     {
         public struct DrawableVariations
         {

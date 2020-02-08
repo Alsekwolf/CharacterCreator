@@ -3,6 +3,7 @@ using CharacterCreator.Menus;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using MenuAPI;
+using Newtonsoft.Json;
 using static CharacterCreator.CommonFunctions.Functions;
 
 namespace CharacterCreator
@@ -13,36 +14,43 @@ namespace CharacterCreator
         private static Creator CreatorInstance { get; set; }
         internal static Menu CreatorMenu { get; set; }
 
-        public static async void PrepMenu(bool male, bool editPed = false)
+        public static async void PrepMenu(bool male, bool editPed = false, string currentCharacter = null)
         {
             IsEdidtingPed = editPed;
             isMalePed = male;
-            
-            if (male)
+            if (!editPed)
             {
-                await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
+                if (male)
+                {
+                    await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
+                }
+                else
+                {
+                    await SetPlayerSkin.SetPlayerSkinFunction("mp_f_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
+                }
+                
+                int maxHealth = Game.PlayerPed.MaxHealth;
+                int maxArmour = Game.Player.MaxArmor;
+                int health = Game.PlayerPed.Health;
+                int armour = Game.PlayerPed.Armor;
+
+                Game.Player.MaxArmor = maxArmour;
+                Game.PlayerPed.MaxHealth = maxHealth;
+                Game.PlayerPed.Health = health;
+                Game.PlayerPed.Armor = armour;
+            
+                API.ClearPedDecorations(Game.PlayerPed.Handle);
+                API.ClearPedFacialDecorations(Game.PlayerPed.Handle);
+                API.SetPedDefaultComponentVariation(Game.PlayerPed.Handle);
+                API.SetPedHairColor(Game.PlayerPed.Handle, 0, 0);
+                API.SetPedEyeColor(Game.PlayerPed.Handle, 0);
+                API.ClearAllPedProps(Game.PlayerPed.Handle);
             }
             else
             {
-                await SetPlayerSkin.SetPlayerSkinFunction("mp_f_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
+                DataManager.MultiplayerPedData loadCharacter = JsonConvert.DeserializeObject<DataManager.MultiplayerPedData>(currentCharacter);
+                Functions.CurrentCharacter = loadCharacter;
             }
-            
-            int maxHealth = Game.PlayerPed.MaxHealth;
-            int maxArmour = Game.Player.MaxArmor;
-            int health = Game.PlayerPed.Health;
-            int armour = Game.PlayerPed.Armor;
-
-            Game.Player.MaxArmor = maxArmour;
-            Game.PlayerPed.MaxHealth = maxHealth;
-            Game.PlayerPed.Health = health;
-            Game.PlayerPed.Armor = armour;
-            
-            API.ClearPedDecorations(Game.PlayerPed.Handle);
-            API.ClearPedFacialDecorations(Game.PlayerPed.Handle);
-            API.SetPedDefaultComponentVariation(Game.PlayerPed.Handle);
-            API.SetPedHairColor(Game.PlayerPed.Handle, 0, 0);
-            API.SetPedEyeColor(Game.PlayerPed.Handle, 0);
-            API.ClearAllPedProps(Game.PlayerPed.Handle);
             
             CreatorInstance = new Creator();
             CreatorMenu = CreatorInstance.GetMenu();

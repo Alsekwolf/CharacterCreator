@@ -200,6 +200,7 @@ namespace CharacterCreator.Menus
             string json = JsonConvert.SerializeObject(Functions.CurrentCharacter);
             
             BaseScript.TriggerServerEvent("CharacterCreator:SavePed", json);
+            MenuFunctions.EndMenu();
 
             return true;
         }

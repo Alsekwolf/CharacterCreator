@@ -59,11 +59,8 @@ namespace CharacterCreator.Menus
                 overlayColorsList.Add($"Color #{i + 1}");
             }
 
-            int maxHairStyles = GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, 2);
-            //if (currentCharacter.ModelHash == (uint)PedHash.FreemodeFemale01)
-            //{
-            //    maxHairStyles /= 2;
-            //}
+            //int maxHairStyles = GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, 2);
+            int maxHairStyles = 10;
             List<string> hairStylesList = new List<string>();
             for (int i = 0; i < maxHairStyles; i++)
             {
@@ -95,17 +92,17 @@ namespace CharacterCreator.Menus
                 ageingStyleList.Add($"Style #{i + 1}");
             }
 
-            List<string> makeupStyleList = new List<string>();
-            for (int i = 0; i < GetNumHeadOverlayValues(4); i++)
-            {
-                makeupStyleList.Add($"Style #{i + 1}");
-            }
+            //List<string> makeupStyleList = new List<string>();
+            //for (int i = 0; i < GetNumHeadOverlayValues(4); i++)
+            //{
+            //    makeupStyleList.Add($"Style #{i + 1}");
+            //}
 
-            List<string> blushStyleList = new List<string>();
-            for (int i = 0; i < GetNumHeadOverlayValues(5); i++)
-            {
-                blushStyleList.Add($"Style #{i + 1}");
-            }
+            //List<string> blushStyleList = new List<string>();
+            //for (int i = 0; i < GetNumHeadOverlayValues(5); i++)
+            //{
+            //    blushStyleList.Add($"Style #{i + 1}");
+            //}
 
             List<string> complexionStyleList = new List<string>();
             for (int i = 0; i < GetNumHeadOverlayValues(6); i++)
@@ -273,15 +270,15 @@ namespace CharacterCreator.Menus
             MenuListItem ageingOpacity = new MenuListItem("Ageing Opacity", opacityList, (int)(currentAgeingOpacity * 10f), "Select an ageing opacity.") { ShowOpacityPanel = true };
             //MenuSliderItem ageingOpacity = new MenuSliderItem("Ageing Opacity", "Select an ageing opacity.", 0, 10, (int)(currentAgeingOpacity * 10f), false);
 
-            MenuListItem makeupStyle = new MenuListItem("Makeup Style", makeupStyleList, currentMakeupStyle, "Select a makeup style.");
-            MenuListItem makeupOpacity = new MenuListItem("Makeup Opacity", opacityList, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity") { ShowOpacityPanel = true };
-            //MenuSliderItem makeupOpacity = new MenuSliderItem("Makeup Opacity", 0, 10, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity.");
-            MenuListItem makeupColor = new MenuListItem("Makeup Color", overlayColorsList, currentMakeupColor, "Select a makeup color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
+            //MenuListItem makeupStyle = new MenuListItem("Makeup Style", makeupStyleList, currentMakeupStyle, "Select a makeup style.");
+            //MenuListItem makeupOpacity = new MenuListItem("Makeup Opacity", opacityList, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity") { ShowOpacityPanel = true };
+            ////MenuSliderItem makeupOpacity = new MenuSliderItem("Makeup Opacity", 0, 10, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity.");
+            //MenuListItem makeupColor = new MenuListItem("Makeup Color", overlayColorsList, currentMakeupColor, "Select a makeup color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
 
-            MenuListItem blushStyle = new MenuListItem("Blush Style", blushStyleList, currentBlushStyle, "Select a blush style.");
-            MenuListItem blushOpacity = new MenuListItem("Blush Opacity", opacityList, (int)(currentBlushOpacity * 10f), "Select a blush opacity.") { ShowOpacityPanel = true };
-            //MenuSliderItem blushOpacity = new MenuSliderItem("Blush Opacity", 0, 10, (int)(currentBlushOpacity * 10f), "Select a blush opacity.");
-            MenuListItem blushColor = new MenuListItem("Blush Color", overlayColorsList, currentBlushColor, "Select a blush color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
+            //MenuListItem blushStyle = new MenuListItem("Blush Style", blushStyleList, currentBlushStyle, "Select a blush style.");
+            //MenuListItem blushOpacity = new MenuListItem("Blush Opacity", opacityList, (int)(currentBlushOpacity * 10f), "Select a blush opacity.") { ShowOpacityPanel = true };
+            ////MenuSliderItem blushOpacity = new MenuSliderItem("Blush Opacity", 0, 10, (int)(currentBlushOpacity * 10f), "Select a blush opacity.");
+            //MenuListItem blushColor = new MenuListItem("Blush Color", overlayColorsList, currentBlushColor, "Select a blush color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
 
             MenuListItem complexionStyle = new MenuListItem("Complexion Style", complexionStyleList, currentComplexionStyle, "Select a complexion style.");
             //MenuSliderItem complexionOpacity = new MenuSliderItem("Complexion Opacity", 0, 10, (int)(currentComplexionOpacity * 10f), "Select a complexion opacity.");
@@ -329,13 +326,13 @@ namespace CharacterCreator.Menus
             AppearanceMenu.AddMenuItem(ageingStyle);
             AppearanceMenu.AddMenuItem(ageingOpacity);
 
-            AppearanceMenu.AddMenuItem(makeupStyle);
-            AppearanceMenu.AddMenuItem(makeupOpacity);
-            AppearanceMenu.AddMenuItem(makeupColor);
+            //AppearanceMenu.AddMenuItem(makeupStyle);
+            //AppearanceMenu.AddMenuItem(makeupOpacity);
+            //AppearanceMenu.AddMenuItem(makeupColor);
 
-            AppearanceMenu.AddMenuItem(blushStyle);
-            AppearanceMenu.AddMenuItem(blushOpacity);
-            AppearanceMenu.AddMenuItem(blushColor);
+            //AppearanceMenu.AddMenuItem(blushStyle);
+            //AppearanceMenu.AddMenuItem(blushOpacity);
+            //AppearanceMenu.AddMenuItem(blushColor);
 
             AppearanceMenu.AddMenuItem(complexionStyle);
             AppearanceMenu.AddMenuItem(complexionOpacity);

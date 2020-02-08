@@ -12,11 +12,9 @@ namespace CharacterCreator.Menus
     {
         private void CreateMenu()
         {
-            //debug code TODO: remove this too
-            MenuController.MenuToggleKey = Control.SelectCharacterMichael;
+            MenuController.EnableMenuToggleKeyOnKeyboard = false;
             MenuController.EnableMenuToggleKeyOnController = false;
-            // debug code
-            
+
             MenuFunctions.CreatorMenu = new Menu("Create Character", "Create A New Character") { Visible = true };
             MenuController.AddMenu(MenuFunctions.CreatorMenu);
 

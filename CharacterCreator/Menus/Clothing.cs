@@ -17,6 +17,7 @@ namespace CharacterCreator.Menus
             MenuController.AddMenu(ClothingMenu);
             
             #region clothing options menu
+            List<MenuItem> listItems = new List<MenuItem>(); 
             string[] clothingCategoryNames = new string[12] { "Unused (head)", "Masks", "Unused (hair)", "Upper Body", "Lower Body", "Bags & Parachutes", "Shoes", "Scarfs & Chains", "Shirt & Accessory", "Body Armor & Accessory 2", "Badges & Logos", "Shirt Overlay & Jackets" };
             for (int i = 0; i < 12; i++)
             {
@@ -25,7 +26,8 @@ namespace CharacterCreator.Menus
                     int currentVariationIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.clothes[i].Key : GetPedDrawableVariation(Game.PlayerPed.Handle, i);
                     int currentVariationTextureIndex = Functions.IsEdidtingPed && Functions.CurrentCharacter.DrawableVariations.clothes.ContainsKey(i) ? Functions.CurrentCharacter.DrawableVariations.clothes[i].Value : GetPedTextureVariation(Game.PlayerPed.Handle, i);
 
-                    int maxDrawables = GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, i);
+                    //int maxDrawables = GetNumberOfPedDrawableVariations(Game.PlayerPed.Handle, i);
+                    int maxDrawables = 16;
 
                     List<string> items = new List<string>();
                     for (int x = 0; x < maxDrawables; x++)
@@ -36,7 +38,19 @@ namespace CharacterCreator.Menus
                     int maxTextures = GetNumberOfPedTextureVariations(Game.PlayerPed.Handle, i, currentVariationIndex);
 
                     MenuListItem listItem = new MenuListItem(clothingCategoryNames[i], items, currentVariationIndex, $"Select a drawable using the arrow keys and press ~o~enter~s~ to cycle through all available textures. Currently selected texture: #{currentVariationTextureIndex + 1} (of {maxTextures}).");
+                    listItems.Add(listItem);
                     ClothingMenu.AddMenuItem(listItem);
+                }
+            }
+
+            foreach (var listItem in listItems)
+            {
+                if (listItem.Text == "Masks" || listItem.Text == "Bags & Parachutes" || listItem.Text == "Scarfs & Chains" || listItem.Text == "Body Armor & Accessory 2" || listItem.Text == "Badges & Logos")
+                {
+                    listItem.Enabled = false;
+                    listItem.RightIcon = MenuItem.Icon.LOCK;
+                    listItem.Description =
+                        "You can't customize this in the character creator, go to a shop after to do so.";
                 }
             }
             #endregion

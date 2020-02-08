@@ -40,8 +40,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MenuAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MenuAPI.FiveM.3.0.4\lib\net452\MenuAPI.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\dependencies\MenuAPI.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\dependencies\Newtonsoft.Json.dll</HintPath>

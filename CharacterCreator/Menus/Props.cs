@@ -31,11 +31,11 @@ namespace CharacterCreator.Menus
 
                 List<string> propsList = new List<string>();
                 for (int i = 0; i < GetNumberOfPedPropDrawableVariations(Game.PlayerPed.Handle, propId); i++)
+                //for (int i = 0; i < 11; i++)
                 {
                     propsList.Add($"Prop #{i} (of {GetNumberOfPedPropDrawableVariations(Game.PlayerPed.Handle, propId)})");
                 }
                 propsList.Add("No Prop");
-
 
                 if (GetPedPropIndex(Game.PlayerPed.Handle, propId) != -1)
                 {

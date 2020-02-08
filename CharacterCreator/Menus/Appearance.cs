@@ -13,7 +13,6 @@ namespace CharacterCreator.Menus
 
         public static void CreateMenu()
         {
-            Debug.WriteLine("test1");
             var male = Functions.isMalePed;
 
             AppearanceMenu.ClearMenuItems();
@@ -660,19 +659,6 @@ namespace CharacterCreator.Menus
                     }
                 }
             };
-        }
-
-        /// <summary>
-        /// Create the menu if it doesn't exist, and then returns it.
-        /// </summary>
-        /// <returns>The Menu</returns>
-        public Menu GetMenu()
-        {
-            if (AppearanceMenu == null)
-            {
-                CreateMenu();
-            }
-            return AppearanceMenu;
         }
     }
 }

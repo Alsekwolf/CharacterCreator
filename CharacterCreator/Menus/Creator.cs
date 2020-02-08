@@ -8,11 +8,11 @@ using static CitizenFX.Core.Native.API;
 
 namespace CharacterCreator.Menus
 {
-    internal class Creator : BaseScript
+    internal class Creator
     {
         private void CreateMenu()
         {
-            //debug code
+            //debug code TODO: remove this too
             MenuController.MenuToggleKey = Control.SelectCharacterMichael;
             MenuController.EnableMenuToggleKeyOnController = false;
             // debug code
@@ -35,6 +35,16 @@ namespace CharacterCreator.Menus
             //adding inheritance as a sub menu to the main menu
             MenuController.BindMenuItem(MenuFunctions.CreatorMenu, Inheritance.InheritanceMenu, Inheritance.InheritanceButton);
             #endregion
+            
+            #region FaceFeaturesMenu
+            FaceFeatures.CreateMenu();
+            //Labels for buttons
+            FaceFeatures.FaceFeaturesButton.Label = "→→→";
+            //adding button items
+            MenuFunctions.CreatorMenu.AddMenuItem(FaceFeatures.FaceFeaturesButton);
+            //adding face features as a sub menu to the main menu
+            MenuController.BindMenuItem(MenuFunctions.CreatorMenu, FaceFeatures.FaceFeaturesMenu, FaceFeatures.FaceFeaturesButton);
+            #endregion
 
             #region AppearanceMenu
             Appearance.CreateMenu();
@@ -44,6 +54,26 @@ namespace CharacterCreator.Menus
             MenuFunctions.CreatorMenu.AddMenuItem(Appearance.AppearanceButton);
             //adding appearance as a sub menu to the main menu
             MenuController.BindMenuItem(MenuFunctions.CreatorMenu, Appearance.AppearanceMenu, Appearance.AppearanceButton);
+            #endregion
+            
+            #region ClothingMenu
+            Clothing.CreateMenu();
+            //Labels for buttons
+            Clothing.ClothingButton.Label = "→→→";
+            //adding button items
+            MenuFunctions.CreatorMenu.AddMenuItem(Clothing.ClothingButton);
+            //adding clothing as a sub menu to the main menu
+            MenuController.BindMenuItem(MenuFunctions.CreatorMenu, Clothing.ClothingMenu, Clothing.ClothingButton);
+            #endregion
+            
+            #region PropsMenu
+            Props.CreateMenu();
+            //Labels for buttons
+            Props.PropsButton.Label = "→→→";
+            //adding button items
+            MenuFunctions.CreatorMenu.AddMenuItem(Props.PropsButton);
+            //adding props as a sub menu to the main menu
+            MenuController.BindMenuItem(MenuFunctions.CreatorMenu, Props.PropsMenu, Props.PropsButton);
             #endregion
             
             MenuItem saveButton = new MenuItem("Save Character", "Save your character.");

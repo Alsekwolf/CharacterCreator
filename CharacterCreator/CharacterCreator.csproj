@@ -53,13 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterCreator.cs" />
+    <Compile Include="CommonFunctions\CameraFunctions.cs" />
     <Compile Include="CommonFunctions\DataManager.cs" />
     <Compile Include="CommonFunctions\Functions.cs" />
     <Compile Include="CommonFunctions\SetPlayerSkin.cs" />
     <Compile Include="MenuFunctions.cs" />
     <Compile Include="Menus\Appearance.cs" />
+    <Compile Include="Menus\Clothing.cs" />
+    <Compile Include="Menus\FaceFeatures.cs" />
     <Compile Include="Menus\Inheritance.cs" />
     <Compile Include="Menus\Creator.cs" />
+    <Compile Include="Menus\Props.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

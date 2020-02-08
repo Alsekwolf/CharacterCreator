@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using CharacterCreator.CommonFunctions;
+﻿using CharacterCreator.CommonFunctions;
 using CharacterCreator.Menus;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
@@ -9,21 +7,12 @@ using static CharacterCreator.CommonFunctions.Functions;
 
 namespace CharacterCreator
 {
-    public class MenuFunctions : BaseScript
+    public class MenuFunctions 
     {
-
-        private static bool MenuIsOpen { get; set; }
+        internal static bool MenuIsOpen { get; set; }
         private static Creator CreatorInstance { get; set; }
         internal static Menu CreatorMenu { get; set; }
 
-        public MenuFunctions()
-        {
-            API.RegisterCommand("TestC", new Action<int, List<object>, string>( (int source, List<object> args, string rawCommand) =>
-                {
-                    CloseMenu();
-                }), false);
-        }
-        
         public static async void OpenMenu(bool male, bool editPed = false)
         {
             IsEdidtingPed = editPed;
@@ -58,8 +47,9 @@ namespace CharacterCreator
             CreatorInstance = new Creator();
             CreatorMenu = CreatorInstance.GetMenu();
             MenuIsOpen = true;
-            TickManger();
-            
+            TickManger1();
+            TickManger2();
+
             EditingPed(male, editPed);
         }
         
@@ -67,17 +57,10 @@ namespace CharacterCreator
         {
             MenuIsOpen = false;
             var currentMenu = MenuController.GetCurrentMenu();
+            //CameraFunctions.ClearCamera();
             if (IsOpen())
             {
                 currentMenu.CloseMenu();
-            }
-        }
-        
-        private static async void TickManger()
-        {
-            while (MenuIsOpen)
-            {
-                await Functions.OnTick();
             }
         }
     }

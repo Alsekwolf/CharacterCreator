@@ -7,7 +7,7 @@ using static CharacterCreator.CommonFunctions.Functions;
 
 namespace CharacterCreator
 {
-    public class MenuFunctions 
+    public partial class MenuFunctions 
     {
         internal static bool MenuIsOpen { get; set; }
         private static Creator CreatorInstance { get; set; }
@@ -52,7 +52,7 @@ namespace CharacterCreator
 
             EditingPed(male, editPed);
         }
-        
+
         public static void CloseMenu()
         {
             MenuIsOpen = false;

@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using static CharacterCreator.Creator;
 using CitizenFX.Core;
-using static CitizenFX.Core.Native.API;
 using MenuAPI;
+using static CitizenFX.Core.Native.API;
 
-namespace CharacterCreator.SubMenus
+namespace CharacterCreator.Menus
 {
-    public class Inheritance
+    internal class Inheritance
     {
-        public static Menu InheritanceMenu;
-        public static MenuItem InheritanceButton;
+        public static readonly Menu InheritanceMenu = new Menu("Character Inheritance", "Character Inheritance Options");
+        public static readonly MenuItem InheritanceButton = new MenuItem("Character Inheritance", "Character inheritance options.");
         
         static List<string> parents = new List<string>();
         public static MenuListItem inheritanceDads = new MenuListItem("Father", parents, 0, "Select a father.");
@@ -20,18 +19,9 @@ namespace CharacterCreator.SubMenus
         
         public static void CreateMenu()
         {
-            InheritanceMenu = new Menu("Character Inheritance", "Character Inheritance Options");
-            InheritanceButton = new MenuItem("Character Inheritance", "Character inheritance options.");
-            
             //Creating inheritance Menu
             MenuController.AddMenu(InheritanceMenu);
-            //Labels for buttons
-            InheritanceButton.Label = "→→→";
-            //adding button items
-            CreatorMenu.AddMenuItem(InheritanceButton);
-            //adding inheritance as a sub menu to the main menu
-            MenuController.BindMenuItem(CreatorMenu, InheritanceMenu, InheritanceButton);
-            
+
             for (int i = 0; i < 46; i++)
             {
                 parents.Add($"#{i}");

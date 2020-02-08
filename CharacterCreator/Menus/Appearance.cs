@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using CharacterCreator.CommonFunctions;
 using CitizenFX.Core;
-using static CitizenFX.Core.Native.API;
 using MenuAPI;
+using static CitizenFX.Core.Native.API;
 
-namespace CharacterCreator.SubMenus
+namespace CharacterCreator.Menus
 {
-    public class Appearance
+    internal class Appearance
     {
         public static readonly Menu AppearanceMenu = new Menu("Character Appearance", "Character Appearance Options");
-        private static readonly MenuItem AppearanceButton = new MenuItem("Character Appearance", "Character appearance options.");
+        public static readonly MenuItem AppearanceButton = new MenuItem("Character Appearance", "Character appearance options.");
 
         public static void CreateMenu()
         {
@@ -20,13 +20,7 @@ namespace CharacterCreator.SubMenus
 
             //Creating appearance Menu
             MenuController.AddMenu(AppearanceMenu);
-            //Labels for buttons
-            AppearanceButton.Label = "→→→";
-            //adding button items
-            Creator.CreatorMenu.AddMenuItem(AppearanceButton);
-            //adding appearance as a sub menu to the main menu
-            MenuController.BindMenuItem(Creator.CreatorMenu, AppearanceMenu, AppearanceButton);
-            
+
             //MenuItem exitNoSave = new MenuItem("test1", "test2.");
             //_appearanceMenu.AddMenuItem(exitNoSave);
             

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CharacterCreator.CommonFunctions;
+using CharacterCreator.Menus;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using MenuAPI;
@@ -27,6 +28,7 @@ namespace CharacterCreator
         {
             IsEdidtingPed = editPed;
             isMalePed = male;
+            
             if (male)
             {
                 await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
@@ -57,10 +59,8 @@ namespace CharacterCreator
             CreatorMenu = CreatorInstance.GetMenu();
             MenuIsOpen = true;
             TickManger();
-            //Tick += Functions.OnTick;
-
+            
             EditingPed(male, editPed);
-            Debug.Write("cookies r cool 2");
         }
         
         public static async void CloseMenu()

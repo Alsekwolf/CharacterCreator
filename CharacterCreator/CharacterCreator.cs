@@ -10,7 +10,7 @@ namespace CharacterCreator
         //TODO: remove this whole file, it's only for testing
         public CharacterCreator()
         {
-            //MenuFunctions.OpenMenu(true);
+            MenuFunctions.OpenMenu(true);
             //Tick += Functions.OnTick;
         }
         

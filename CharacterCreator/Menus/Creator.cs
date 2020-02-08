@@ -16,7 +16,7 @@ namespace CharacterCreator.Menus
             MenuController.EnableMenuToggleKeyOnKeyboard = false;
             MenuController.EnableMenuToggleKeyOnController = false;
 
-            MenuFunctions.CreatorMenu = new Menu("Create Character", "Create A New Character") { Visible = true };
+            MenuFunctions.CreatorMenu = new Menu("Create Character", "Create A New Character") { Visible = false };
             MenuController.AddMenu(MenuFunctions.CreatorMenu);
 
             #region GenderSelection
@@ -122,7 +122,7 @@ namespace CharacterCreator.Menus
                         await BaseScript.Delay(100);
 
                         //MenuFunctions.CreatorMenu.OpenMenu();
-                        MenuFunctions.CloseMenu();
+                        MenuFunctions.EndMenu();
                     }
                 }
                 else if (item == exitNoSave) // exit without saving
@@ -156,7 +156,7 @@ namespace CharacterCreator.Menus
                         while (IsControlPressed(2, 201) || IsControlPressed(2, 217) || IsDisabledControlPressed(2, 201) || IsDisabledControlPressed(2, 217))
                             await BaseScript.Delay(0);
                         await BaseScript.Delay(100);
-                        MenuFunctions.CloseMenu();
+                        MenuFunctions.EndMenu();
                     }
                     else // otherwise cancel and go back to the editor.
                     {

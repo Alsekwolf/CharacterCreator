@@ -9,11 +9,11 @@ namespace CharacterCreator
 {
     public partial class MenuFunctions 
     {
-        internal static bool MenuIsOpen { get; set; }
+        internal static bool MenuIsOperating { get; set; }
         private static Creator CreatorInstance { get; set; }
         internal static Menu CreatorMenu { get; set; }
 
-        public static async void OpenMenu(bool male, bool editPed = false)
+        public static async void PrepMenu(bool male, bool editPed = false)
         {
             IsEdidtingPed = editPed;
             isMalePed = male;
@@ -46,16 +46,26 @@ namespace CharacterCreator
             
             CreatorInstance = new Creator();
             CreatorMenu = CreatorInstance.GetMenu();
-            MenuIsOpen = true;
+            MenuIsOperating = true;
             TickManger1();
             TickManger2();
 
             EditingPed(male, editPed);
         }
 
+        public static void OpenMenu()
+        {
+            CreatorMenu.OpenMenu();
+        }
+        
         public static void CloseMenu()
         {
-            MenuIsOpen = false;
+            CreatorMenu.CloseMenu();
+        }
+
+        public static void EndMenu()
+        {
+            MenuIsOperating = false;
             var currentMenu = MenuController.GetCurrentMenu();
             //CameraFunctions.ClearCamera();
             if (IsOpen())

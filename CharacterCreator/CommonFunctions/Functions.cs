@@ -18,14 +18,14 @@ namespace CharacterCreator.CommonFunctions
 
         public static async void TickManger1()
         {
-            while (MenuFunctions.MenuIsOpen)
+            while (MenuFunctions.MenuIsOperating)
             {
                 await CameraFunctions.ManageCamera();
             }
         }
         public static async void TickManger2()
         {
-            while (MenuFunctions.MenuIsOpen)
+            while (MenuFunctions.MenuIsOperating)
             {
                 await Functions.OnTick();
             }

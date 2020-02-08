@@ -55,12 +55,19 @@ namespace CharacterCreator
 
         public static void OpenMenu()
         {
-            CreatorMenu.OpenMenu();
+            if (MenuIsOperating)
+            {
+                CreatorMenu?.OpenMenu();
+            }
+            
         }
         
         public static void CloseMenu()
         {
-            CreatorMenu.CloseMenu();
+            if (MenuIsOperating)
+            {
+                CreatorMenu?.CloseMenu();
+            }
         }
 
         public static void EndMenu()

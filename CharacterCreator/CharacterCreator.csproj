@@ -73,6 +73,8 @@
   </Target>
   <Target Name="AfterBuild">
     <Message Text="### AfterBuild ###" Importance="high" />
+    <!--
     <Exec Command="powershell.exe -ExecutionPolicy Unrestricted $(SolutionDir)afterBuild.ps1 -SolutionDir $(SolutionDir) -ProjectPath $(ProjectPath)" />
+    -->
   </Target>
 </Project>

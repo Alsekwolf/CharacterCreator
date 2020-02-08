@@ -53,20 +53,33 @@ namespace CharacterCreator
             EditingPed(male, editPed);
         }
 
-        public static void OpenMenu()
+        public static async void OpenMenu()
         {
+            await BaseScript.Delay(0);
+            while (!MenuIsOperating)
+            {
+                await BaseScript.Delay(100);
+            }
+
             if (MenuIsOperating)
             {
-                CreatorMenu?.OpenMenu();
+                CreatorMenu = CreatorInstance.GetMenu();
+                CreatorMenu.OpenMenu();
             }
-            
         }
         
-        public static void CloseMenu()
+        public static async void CloseMenu()
         {
+            await BaseScript.Delay(0);
+            while (!MenuIsOperating)
+            {
+                await BaseScript.Delay(100);
+            }
+            
             if (MenuIsOperating)
             {
-                CreatorMenu?.CloseMenu();
+                CreatorMenu = CreatorInstance.GetMenu();
+                CreatorMenu.CloseMenu();
             }
         }
 

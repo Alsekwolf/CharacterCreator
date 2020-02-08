@@ -92,17 +92,17 @@ namespace CharacterCreator.Menus
                 ageingStyleList.Add($"Style #{i + 1}");
             }
 
-            //List<string> makeupStyleList = new List<string>();
-            //for (int i = 0; i < GetNumHeadOverlayValues(4); i++)
-            //{
-            //    makeupStyleList.Add($"Style #{i + 1}");
-            //}
+            List<string> makeupStyleList = new List<string>();
+            for (int i = 0; i < GetNumHeadOverlayValues(4); i++)
+            {
+                makeupStyleList.Add($"Style #{i + 1}");
+            }
 
-            //List<string> blushStyleList = new List<string>();
-            //for (int i = 0; i < GetNumHeadOverlayValues(5); i++)
-            //{
-            //    blushStyleList.Add($"Style #{i + 1}");
-            //}
+            List<string> blushStyleList = new List<string>();
+            for (int i = 0; i < GetNumHeadOverlayValues(5); i++)
+            {
+                blushStyleList.Add($"Style #{i + 1}");
+            }
 
             List<string> complexionStyleList = new List<string>();
             for (int i = 0; i < GetNumHeadOverlayValues(6); i++)
@@ -270,15 +270,15 @@ namespace CharacterCreator.Menus
             MenuListItem ageingOpacity = new MenuListItem("Ageing Opacity", opacityList, (int)(currentAgeingOpacity * 10f), "Select an ageing opacity.") { ShowOpacityPanel = true };
             //MenuSliderItem ageingOpacity = new MenuSliderItem("Ageing Opacity", "Select an ageing opacity.", 0, 10, (int)(currentAgeingOpacity * 10f), false);
 
-            //MenuListItem makeupStyle = new MenuListItem("Makeup Style", makeupStyleList, currentMakeupStyle, "Select a makeup style.");
-            //MenuListItem makeupOpacity = new MenuListItem("Makeup Opacity", opacityList, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity") { ShowOpacityPanel = true };
-            ////MenuSliderItem makeupOpacity = new MenuSliderItem("Makeup Opacity", 0, 10, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity.");
-            //MenuListItem makeupColor = new MenuListItem("Makeup Color", overlayColorsList, currentMakeupColor, "Select a makeup color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
+            MenuListItem makeupStyle = new MenuListItem("Makeup Style", makeupStyleList, currentMakeupStyle, "Select a makeup style.");
+            MenuListItem makeupOpacity = new MenuListItem("Makeup Opacity", opacityList, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity") { ShowOpacityPanel = true };
+            //MenuSliderItem makeupOpacity = new MenuSliderItem("Makeup Opacity", 0, 10, (int)(currentMakeupOpacity * 10f), "Select a makeup opacity.");
+            MenuListItem makeupColor = new MenuListItem("Makeup Color", overlayColorsList, currentMakeupColor, "Select a makeup color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
 
-            //MenuListItem blushStyle = new MenuListItem("Blush Style", blushStyleList, currentBlushStyle, "Select a blush style.");
-            //MenuListItem blushOpacity = new MenuListItem("Blush Opacity", opacityList, (int)(currentBlushOpacity * 10f), "Select a blush opacity.") { ShowOpacityPanel = true };
-            ////MenuSliderItem blushOpacity = new MenuSliderItem("Blush Opacity", 0, 10, (int)(currentBlushOpacity * 10f), "Select a blush opacity.");
-            //MenuListItem blushColor = new MenuListItem("Blush Color", overlayColorsList, currentBlushColor, "Select a blush color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
+            MenuListItem blushStyle = new MenuListItem("Blush Style", blushStyleList, currentBlushStyle, "Select a blush style.");
+            MenuListItem blushOpacity = new MenuListItem("Blush Opacity", opacityList, (int)(currentBlushOpacity * 10f), "Select a blush opacity.") { ShowOpacityPanel = true };
+            //MenuSliderItem blushOpacity = new MenuSliderItem("Blush Opacity", 0, 10, (int)(currentBlushOpacity * 10f), "Select a blush opacity.");
+            MenuListItem blushColor = new MenuListItem("Blush Color", overlayColorsList, currentBlushColor, "Select a blush color.") { ShowColorPanel = true, ColorPanelColorType = MenuListItem.ColorPanelType.Makeup };
 
             MenuListItem complexionStyle = new MenuListItem("Complexion Style", complexionStyleList, currentComplexionStyle, "Select a complexion style.");
             //MenuSliderItem complexionOpacity = new MenuSliderItem("Complexion Opacity", 0, 10, (int)(currentComplexionOpacity * 10f), "Select a complexion opacity.");
@@ -326,13 +326,13 @@ namespace CharacterCreator.Menus
             AppearanceMenu.AddMenuItem(ageingStyle);
             AppearanceMenu.AddMenuItem(ageingOpacity);
 
-            //AppearanceMenu.AddMenuItem(makeupStyle);
-            //AppearanceMenu.AddMenuItem(makeupOpacity);
-            //AppearanceMenu.AddMenuItem(makeupColor);
+            AppearanceMenu.AddMenuItem(makeupStyle);
+            AppearanceMenu.AddMenuItem(makeupOpacity);
+            AppearanceMenu.AddMenuItem(makeupColor);
 
-            //AppearanceMenu.AddMenuItem(blushStyle);
-            //AppearanceMenu.AddMenuItem(blushOpacity);
-            //AppearanceMenu.AddMenuItem(blushColor);
+            AppearanceMenu.AddMenuItem(blushStyle);
+            AppearanceMenu.AddMenuItem(blushOpacity);
+            AppearanceMenu.AddMenuItem(blushColor);
 
             AppearanceMenu.AddMenuItem(complexionStyle);
             AppearanceMenu.AddMenuItem(complexionOpacity);
@@ -355,6 +355,55 @@ namespace CharacterCreator.Menus
             AppearanceMenu.AddMenuItem(bodyBlemishesOpacity);
 
             AppearanceMenu.AddMenuItem(eyeColor);
+            
+            #region LockingItems
+
+            makeupStyle.Enabled = false;
+            makeupStyle.RightIcon = MenuItem.Icon.LOCK;
+            makeupStyle.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            makeupOpacity.Enabled = false;
+            makeupOpacity.RightIcon = MenuItem.Icon.LOCK;
+            makeupOpacity.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            makeupColor.Enabled = false;
+            makeupColor.RightIcon = MenuItem.Icon.LOCK;
+            makeupColor.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            blushStyle.Enabled = false;
+            blushStyle.RightIcon = MenuItem.Icon.LOCK;
+            blushStyle.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            blushOpacity.Enabled = false;
+            blushOpacity.RightIcon = MenuItem.Icon.LOCK;
+            blushOpacity.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+
+            blushColor.Enabled = false;
+            blushColor.RightIcon = MenuItem.Icon.LOCK;
+            blushColor.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            lipstickStyle.Enabled = false;
+            lipstickStyle.RightIcon = MenuItem.Icon.LOCK;
+            lipstickStyle.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            lipstickOpacity.Enabled = false;
+            lipstickOpacity.RightIcon = MenuItem.Icon.LOCK;
+            lipstickOpacity.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+            
+            lipstickColor.Enabled = false;
+            lipstickColor.RightIcon = MenuItem.Icon.LOCK;
+            lipstickColor.Description =
+                "You can't customize this in the character creator, go to a shop after to do so.";
+
+            #endregion
 
             if (male)
             {

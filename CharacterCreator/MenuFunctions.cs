@@ -17,9 +17,10 @@ namespace CharacterCreator
         public static async void PrepMenu(bool male, bool editPed = false, string currentCharacter = null)
         {
             IsEdidtingPed = editPed;
-            isMalePed = male;
             if (!editPed)
             {
+                isMalePed = male;
+
                 if (male)
                 {
                     await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
@@ -49,6 +50,7 @@ namespace CharacterCreator
             else
             {
                 DataManager.MultiplayerPedData loadCharacter = JsonConvert.DeserializeObject<DataManager.MultiplayerPedData>(currentCharacter);
+                isMalePed = loadCharacter.IsMale;
                 Functions.CurrentCharacter = loadCharacter;
             }
             

@@ -110,19 +110,49 @@ namespace CharacterCreator.Menus
             {
                 if (item == saveButton) // save ped
                 {
-                    if (await SavePed())
+                    bool confirm = false;
+                    AddTextEntry("save_message_first_line", "Are you sure you want to save your character?");
+                    AddTextEntry("save_message_second_line", "This will close the creator!");
+                    MenuFunctions.CreatorMenu.CloseMenu();
+                    
+                    // wait for confirmation or cancel input.
+                    while (true)
                     {
-                        while (!MenuController.IsAnyMenuOpen())
+                        await BaseScript.Delay(0);
+                        int unk = 1;
+                        int unk2 = 1;
+                        SetWarningMessage("save_message_first_line", 20, "save_message_second_line", true, 0, ref unk, ref unk2, true, 0);
+                        if (IsControlJustPressed(2, 201) || IsControlJustPressed(2, 217)) // continue/accept
                         {
-                            await BaseScript.Delay(0);
+                            confirm = true;
+                            break;
                         }
+                        else if (IsControlJustPressed(2, 202)) // cancel
+                        {
+                            break;
+                        }
+                    }
 
-                        while (IsControlPressed(2, 201) || IsControlPressed(2, 217) || IsDisabledControlPressed(2, 201) || IsDisabledControlPressed(2, 217))
-                            await BaseScript.Delay(0);
-                        await BaseScript.Delay(100);
+                    // if confirmed to discard changes quit the editor.
+                    if (confirm)
+                    {
+                        if (await SavePed())
+                        {
+                            while (!MenuController.IsAnyMenuOpen())
+                            {
+                                await BaseScript.Delay(0);
+                            }
 
-                        //MenuFunctions.CreatorMenu.OpenMenu();
+                            while (IsControlPressed(2, 201) || IsControlPressed(2, 217) || IsDisabledControlPressed(2, 201) || IsDisabledControlPressed(2, 217))
+                                await BaseScript.Delay(0);
+                            await BaseScript.Delay(100);
+                        }
                         MenuFunctions.EndMenu();
+                    }
+                    else // otherwise cancel and go back to the editor.
+                    {
+                        await BaseScript.Delay(100);
+                        MenuFunctions.CreatorMenu.OpenMenu();
                     }
                 }
                 else if (item == exitNoSave) // exit without saving

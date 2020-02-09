@@ -102,6 +102,7 @@ namespace CharacterCreator
             {
                 currentMenu.CloseMenu();
             }
+            BaseScript.TriggerEvent("CharacterCreator:MenuEnded");
         }
     }
 }

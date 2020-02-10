@@ -1,5 +1,5 @@
-﻿using CharacterCreator.CommonFunctions;
-using CharacterCreator.Menus;
+﻿using System.Threading.Tasks;
+using CharacterCreator.CommonFunctions;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 using MenuAPI;
@@ -8,59 +8,38 @@ using static CharacterCreator.CommonFunctions.Functions;
 
 namespace CharacterCreator
 {
-    public partial class MenuFunctions 
+    public class MenuFunctions 
     {
         internal static bool MenuIsOperating { get; set; }
-        private static Creator CreatorInstance { get; set; }
-        internal static Menu CreatorMenu { get; set; }
-
-        public static async void PrepMenu(bool male, bool editPed = false, string currentCharacter = null)
+        internal static bool MenuIsOpen { get; set; }
+        private static CreatorMenu CreatorInstance { get; set; }
+        internal static Menu CharacterCreatorMenu { get; set; }
+        
+        internal static DataManager.MultiplayerPedData CurrentCharacter = new DataManager.MultiplayerPedData();
+        
+        public static async void PrepMenu(bool male, bool editPed = false, string loadCharacterJson = null)
         {
-            IsEdidtingPed = editPed;
-            if (!editPed)
-            {
-                isMalePed = male;
-
-                if (male)
-                {
-                    await SetPlayerSkin.SetPlayerSkinFunction("mp_m_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
-                }
-                else
-                {
-                    await SetPlayerSkin.SetPlayerSkinFunction("mp_f_freemode_01", new SetPlayerSkin.PedInfo() { version = -1 });
-                }
-                
-                int maxHealth = Game.PlayerPed.MaxHealth;
-                int maxArmour = Game.Player.MaxArmor;
-                int health = Game.PlayerPed.Health;
-                int armour = Game.PlayerPed.Armor;
-
-                Game.Player.MaxArmor = maxArmour;
-                Game.PlayerPed.MaxHealth = maxHealth;
-                Game.PlayerPed.Health = health;
-                Game.PlayerPed.Armor = armour;
-            
-                API.ClearPedDecorations(Game.PlayerPed.Handle);
-                API.ClearPedFacialDecorations(Game.PlayerPed.Handle);
-                API.SetPedDefaultComponentVariation(Game.PlayerPed.Handle);
-                API.SetPedHairColor(Game.PlayerPed.Handle, 0, 0);
-                API.SetPedEyeColor(Game.PlayerPed.Handle, 0);
-                API.ClearAllPedProps(Game.PlayerPed.Handle);
-            }
-            else
-            {
-                DataManager.MultiplayerPedData loadCharacter = JsonConvert.DeserializeObject<DataManager.MultiplayerPedData>(currentCharacter);
-                isMalePed = loadCharacter.IsMale;
-                Functions.CurrentCharacter = loadCharacter;
-            }
-            
-            CreatorInstance = new Creator();
-            CreatorMenu = CreatorInstance.GetMenu();
+            CreatorInstance = new CreatorMenu();
+            CharacterCreatorMenu = CreatorInstance.GetMenu();
             MenuIsOperating = true;
             TickManger1();
             TickManger2();
+            
+            if (editPed)
+            {
+                CurrentCharacter = JsonConvert.DeserializeObject<DataManager.MultiplayerPedData>(loadCharacterJson);
 
-            EditingPed(male, editPed);
+                await CreatorMenu.SpawnSavedPed(true);
+
+                CreatorInstance.MakeCreateCharacterMenu(male: CurrentCharacter.IsMale, editPed: true);
+            }
+        }
+
+        public static async Task LoadPed(bool restoreWeapons, string loadCharacterJson)
+        {
+            CurrentCharacter = JsonConvert.DeserializeObject<DataManager.MultiplayerPedData>(loadCharacterJson);
+            
+            await CreatorMenu.SpawnSavedPed(restoreWeapons);
         }
 
         public static async void OpenMenu()
@@ -73,8 +52,9 @@ namespace CharacterCreator
 
             if (MenuIsOperating)
             {
-                CreatorMenu = CreatorInstance.GetMenu();
-                CreatorMenu.OpenMenu();
+                //CreatorMenu = CreatorInstance.GetMenu();
+                MenuIsOpen = true;
+                CharacterCreatorMenu.OpenMenu();
             }
         }
         
@@ -88,8 +68,9 @@ namespace CharacterCreator
             
             if (MenuIsOperating)
             {
-                CreatorMenu = CreatorInstance.GetMenu();
-                CreatorMenu.CloseMenu();
+                //CreatorMenu = CreatorInstance.GetMenu();
+                MenuIsOpen = false;    
+                CharacterCreatorMenu.CloseMenu();
             }
         }
 
@@ -97,7 +78,6 @@ namespace CharacterCreator
         {
             MenuIsOperating = false;
             var currentMenu = MenuController.GetCurrentMenu();
-            //CameraFunctions.ClearCamera();
             if (IsOpen())
             {
                 currentMenu.CloseMenu();

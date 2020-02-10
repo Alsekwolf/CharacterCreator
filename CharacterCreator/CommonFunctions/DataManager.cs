@@ -3,18 +3,16 @@ using CitizenFX.Core;
 
 namespace CharacterCreator.CommonFunctions
 {
-    internal static class DataManager
+    public static class DataManager
     {
-        public static readonly List<string> FacialExpressions = new List<string>() { "mood_Normal_1", "mood_Happy_1", "mood_Angry_1", "mood_Aiming_1", "mood_Injured_1", "mood_stressed_1", "mood_smug_1", "mood_sulk_1", };
-
         public struct DrawableVariations
         {
-            public Dictionary<int, KeyValuePair<int, int>> Clothes;
+            public Dictionary<int, KeyValuePair<int, int>> clothes;
         }
 
         public struct PropVariations
         {
-            public Dictionary<int, KeyValuePair<int, int>> Props;
+            public Dictionary<int, KeyValuePair<int, int>> props;
         }
 
         public struct FaceShapeFeatures
@@ -23,7 +21,7 @@ namespace CharacterCreator.CommonFunctions
         }
 
         public struct PedTattoos
-        { 
+        {
             public List<KeyValuePair<string, string>> TorsoTattoos;
             public List<KeyValuePair<string, string>> HeadTattoos;
             public List<KeyValuePair<string, string>> LeftArmTattoos;
@@ -102,7 +100,7 @@ namespace CharacterCreator.CommonFunctions
         }
 
         public struct MultiplayerPedData
-        { //TODO: delete used?
+        {
             public PedHeadBlendData PedHeadBlendData;
             public DrawableVariations DrawableVariations;
             public PropVariations PropVariations;

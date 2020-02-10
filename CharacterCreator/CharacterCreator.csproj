@@ -55,18 +55,20 @@
     <Compile Include="CommonFunctions\DataManager.cs" />
     <Compile Include="CommonFunctions\Functions.cs" />
     <Compile Include="CommonFunctions\SetPlayerSkin.cs" />
+    <Compile Include="CommonFunctions\TattoosData.cs" />
+    <Compile Include="CreatorMenu.cs" />
     <Compile Include="MenuFunctions.cs" />
-    <Compile Include="Menus\Appearance.cs" />
-    <Compile Include="Menus\Clothing.cs" />
-    <Compile Include="Menus\FaceFeatures.cs" />
-    <Compile Include="Menus\Inheritance.cs" />
-    <Compile Include="Menus\Creator.cs" />
-    <Compile Include="Menus\Props.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpawnSavedPed.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\overlays.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">

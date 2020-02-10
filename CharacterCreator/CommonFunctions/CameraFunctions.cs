@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CharacterCreator.Menus;
 using CitizenFX.Core;
 using MenuAPI;
 using static CitizenFX.Core.Native.API;
@@ -35,7 +34,7 @@ namespace CharacterCreator.CommonFunctions
                         await BaseScript.Delay(0);
 
                         int index = GetCameraIndex(MenuController.GetCurrentMenu());
-                        if (MenuController.GetCurrentMenu() == Props.PropsMenu && MenuController.GetCurrentMenu().CurrentIndex == 3 && !reverseCamera)
+                        if (MenuController.GetCurrentMenu() == CreatorMenu.propsMenu && MenuController.GetCurrentMenu().CurrentIndex == 3 && !reverseCamera)
                         {
                             TaskPlayAnim(Game.PlayerPed.Handle, "anim@random@shop_clothes@watches", "BASE", 8f, -8f, -1, 1, 0, false, false, false);
                         }
@@ -189,11 +188,11 @@ namespace CharacterCreator.CommonFunctions
         {
             if (menu != null)
             {
-                if (menu == Inheritance.InheritanceMenu)
+                if (menu == CreatorMenu.inheritanceMenu)
                 {
                     return 1;
                 }
-                else if (menu == Clothing.ClothingMenu)
+                else if (menu == CreatorMenu.clothesMenu)
                 {
                     switch (menu.CurrentIndex)
                     {
@@ -221,7 +220,7 @@ namespace CharacterCreator.CommonFunctions
                             return 0;
                     }
                 }
-                else if (menu == Props.PropsMenu)
+                else if (menu == CreatorMenu.propsMenu)
                 {
                     switch (menu.CurrentIndex)
                     {
@@ -237,7 +236,7 @@ namespace CharacterCreator.CommonFunctions
                             return 0;
                     }
                 }
-                else if (menu == Appearance.AppearanceMenu)
+                else if (menu == CreatorMenu.appearanceMenu)
                 {
                     switch (menu.CurrentIndex)
                     {
@@ -282,8 +281,8 @@ namespace CharacterCreator.CommonFunctions
                             return 0;
                     }
                 }
-                /*else if (menu == MainMenu.MpPedCustomizationMenu.tattoosMenu)
-                { TODO: Delete this?
+                else if (menu == CreatorMenu.tattoosMenu)
+                {
                     switch (menu.CurrentIndex)
                     {
                         case 0: // head
@@ -301,8 +300,8 @@ namespace CharacterCreator.CommonFunctions
                         default:
                             return 0;
                     }
-                }*/
-                else if (menu == FaceFeatures.FaceFeaturesMenu)
+                }
+                else if (menu == CreatorMenu.faceShapeMenu)
                 {
                     MenuItem item = menu.GetCurrentMenuItem();
                     if (item != null)

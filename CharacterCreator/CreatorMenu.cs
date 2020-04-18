@@ -717,8 +717,6 @@ namespace CharacterCreator
             MenuController.BindMenuItem(MenuFunctions.CharacterCreatorMenu, createCharacterMenu, createMaleBtn);
             MenuFunctions.CharacterCreatorMenu.AddMenuItem(createFemaleBtn);
             MenuController.BindMenuItem(MenuFunctions.CharacterCreatorMenu, createCharacterMenu, createFemaleBtn);
-            MenuFunctions.CharacterCreatorMenu.AddMenuItem(createFemaleBtn);
-            MenuController.BindMenuItem(MenuFunctions.CharacterCreatorMenu, createCharacterMenu, createFemaleBtn);
 
             MenuFunctions.CharacterCreatorMenu.RefreshIndex();
 

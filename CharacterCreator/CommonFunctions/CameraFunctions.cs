@@ -9,7 +9,7 @@ namespace CharacterCreator.CommonFunctions
     internal class CameraFunctions
     {
         private static bool reverseCamera = false;
-        private static Camera camera;
+        internal static Camera camera;
         internal static float CameraFov { get; set; } = 45;
         internal static int CurrentCam { get; set; }
 

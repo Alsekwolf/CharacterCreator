@@ -74,6 +74,14 @@ namespace CharacterCreator
             }
         }
 
+        public static void ClearCamera()
+        {
+            if (CameraFunctions.camera != null)
+            {
+                CameraFunctions.ClearCamera();
+            }
+        }
+
         public static void EndMenu()
         {
             MenuIsOperating = false;
@@ -82,6 +90,7 @@ namespace CharacterCreator
             {
                 currentMenu.CloseMenu();
             }
+            
             BaseScript.TriggerEvent("CharacterCreator:MenuEnded");
         }
     }
